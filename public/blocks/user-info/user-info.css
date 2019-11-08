@@ -1,0 +1,48 @@
+@import url(./__photo/user-info__photo.css);
+@import url(./__data/user-info__data.css);
+@import url(./__name/user-info__name.css);
+@import url(./__job/user-info__job.css);
+@import url(./__button/user-info__button.css);
+
+.user-info {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  color: white;
+  width: 100%;
+}
+
+.user-info__edit-button {
+  cursor: pointer;
+
+  width: 38px;
+  height: 18px;
+
+  margin-top: 24px;
+
+  border: 1px #fff solid;
+  background-color: #000;
+  color: #fff;
+  font-size: 12px;
+
+  outline: none;
+}
+
+.user-info__edit-button:hover {
+  background-color: #fff;
+  color: #000;
+  border: #fff;
+}
+
+.user-info__edit-button:active{
+  background-color: #999;
+  color: #000;
+  border: #fff;
+}
+
+@media screen and (max-width: 980px) {
+  .user-info {
+    flex-direction: column;
+    align-items: center;
+  }
+}
