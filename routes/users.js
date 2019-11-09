@@ -13,8 +13,8 @@ const sendUserById = (req, res) => {
         return; // если нашли - выходим из перебора
       }
     }
-    // если не нашли - шлем 404
-    res.status(404).send({ message: 'Нет пользователя с таким id' });
+    // если не нашли - шлем 422
+    res.status(422).send({ message: 'Нет пользователя с таким id' });
 };
 
 router.get('/users', (req, res) => {
