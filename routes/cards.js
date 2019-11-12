@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
-const cards_data = require('../data/cards');
+const cardsData = require('../data/cards');
 
 router.get('/cards', (req, res) => {
-  res.send(cards_data);
+  res.send(cardsData);
 });
 module.exports = router;

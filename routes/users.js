@@ -1,22 +1,20 @@
 const router = require('express').Router();
 
-const users_data = require('../data/users');
+const usersData = require('../data/users');
 
 const sendUserById = (req, res) => {
-    // перебираем пользователей и сравниваем их id с запрошенным
-    for (let i = 0; i < users_data.length; i += 1) {
+    for (let i = 0; i < usersData.length; i++) {
       // eslint-disable-next-line no-underscore-dangle
-      if (users_data[i]._id === req.params.id) {
-        res.send(users_data[i]);
-        return; // если нашли - выходим из перебора
+      if (usersData[i]._id === req.params.id) {
+        res.send(usersData[i]);
+        return; 
       }
     }
-    // если не нашли - шлем 422
     res.status(422).send({ message: 'Нет пользователя с таким id' });
 };
 
 router.get('/users', (req, res) => {
-  res.send(users_data);
+  res.send(usersData);
 });
 router.get('/users/:id', sendUserById);
 
