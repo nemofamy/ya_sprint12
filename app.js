@@ -14,7 +14,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 const cards = require('./routes/cards');
 const users = require('./routes/users');
 
-app.use(express.static('public'));
 app.use(express.json());
 app.use((req, res, next) => {
   req.user = {
