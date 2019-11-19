@@ -1,24 +1,16 @@
 const router = require('express').Router();
 
-const users_data = require('../data/users');
+const {
+  getUsers,
+  getUserById,
+  changeProfile,
+  changeAvatar,
+} = require('../controllers/users');
 
-const sendUserById = (req, res) => {
-    // перебираем пользователей и сравниваем их id с запрошенным
-    for (let i = 0; i < users_data.length; i += 1) {
-      // eslint-disable-next-line no-underscore-dangle
-      if (users_data[i]._id === req.params.id) {
-        res.send(users_data[i]);
-        return; // если нашли - выходим из перебора
-      }
-    }
-    // если не нашли - шлем 422
-    res.status(422).send({ message: 'Нет пользователя с таким id' });
-};
-
-router.get('/users', (req, res) => {
-  res.send(users_data);
-});
-router.get('/users/:id', sendUserById);
+router.get('/', getUsers);
+router.get('/:userId', getUserById);
+router.patch('/me', changeProfile);
+router.patch('/me/avatar', changeAvatar);
 
 // на случай непонятного запроса
 router.get('/:strangeRequest', (req, res) => {
