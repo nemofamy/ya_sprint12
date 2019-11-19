@@ -18,7 +18,7 @@ module.exports.removeCard = (req, res) => {
   const { cardId } = req.params;
   Card.findById(cardId)
     .then((user) => {
-      if (req.user._id === user.owner) {
+      if (req.user._id.equals(user.owner)) {
         Card.findByIdAndRemove(cardId)
           .then((user) => res.send({ data: user }))
           .catch((err) => res.status(500).send({ message: err.message }));
