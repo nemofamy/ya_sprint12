@@ -1,5 +1,5 @@
 const validator = require('validator');
-const bcrypt = require('bcriptjs');
+const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
@@ -44,7 +44,7 @@ const userSchema = mongoose.Schema({
   },
 });
 
-userSchema.statics.findUserByCredentials(email, password) {
+userSchema.statics.findUserByCredentials = function (email, password) {
   return this.findOne({ email })
     .select('+password')
     .then((user) => {

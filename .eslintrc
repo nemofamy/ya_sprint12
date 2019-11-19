@@ -3,6 +3,7 @@
     "rules": {
         "no-underscore-dangle": "off",
         "no-useless-escape": "off",
-        "no-plusplus": "off"
+        "no-plusplus": "off",
+        "func-names": "off"
     }
 }
