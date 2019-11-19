@@ -3,16 +3,14 @@ const router = require('express').Router();
 const {
   getUsers,
   getUserById,
-  postUser,
   changeProfile,
   changeAvatar,
 } = require('../controllers/users');
 
-router.get('/users', getUsers);
-router.get('/users/:userId', getUserById);
-router.post('/users', postUser);
-router.patch('/users/me', changeProfile);
-router.patch('/users/me/avatar', changeAvatar);
+router.get('/', getUsers);
+router.get('/:userId', getUserById);
+router.patch('/me', changeProfile);
+router.patch('/me/avatar', changeAvatar);
 
 // на случай непонятного запроса
 router.get('/:strangeRequest', (req, res) => {

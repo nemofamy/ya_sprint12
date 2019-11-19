@@ -16,9 +16,16 @@ module.exports.postCard = (req, res) => {
 
 module.exports.removeCard = (req, res) => {
   const { cardId } = req.params;
-  Card.findByIdAndRemove(cardId)
-    .then((user) => res.send({ data: user }))
-    .catch((err) => res.status(500).send({ message: err.message }));
+  Card.findById(cardId)
+    .then((user) => {
+      if (req.user._id === user.owner) {
+        Card.findByIdAndRemove(cardId)
+          .then((user) => res.send({ data: user }))
+          .catch((err) => res.status(500).send({ message: err.message }));
+      } else {
+        res.status(500).send({ message: 'Это не ваша карточка!' });
+      }
+    });
 };
 
 module.exports.addLike = (req, res) => {
